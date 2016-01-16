@@ -4,6 +4,8 @@ from Makieta import Makieta
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from ORM import *
+from sqlalchemy.orm import load_only
+from sqlalchemy import and_
 
 class Model(object):
     def __init__(self):
@@ -15,22 +17,31 @@ class Model(object):
         self.i = 0 # debug
 
     def pobierz_pierwsza_makiete(self):
-        employees = self._cursor.query(Employee).all()
-        makieta = Makieta(employees)
+        stale = self._cursor.query(StalDlaEnergetyki).all()
+        makieta = Makieta(stale)
         return makieta
 
     def pobierz_makiete(self):
-        # powinno korzystac z funkcji oblicz wynikowy material
-        employees = self._cursor.query(Employee).all()
-        makieta = Makieta(employees[self.i])
-        self.i = (self.i + 1) % 2
+        makieta = Makieta(self._wynikowy_material)
         return makieta
 
     def oblicz_material(self, materialA, materialB):
-        self._wynikowy_material = materialA #zaslepka dla testow
+        A_min_mang = None
+        A_max_mang = None
+        B_min_mang = None
+        B_max_mang = None
+        for a in self._cursor.query(StalDlaEnergetyki).filter_by(nazwa=materialA):
+            A_min_mang = a.minimum_manganu
+            A_max_mang = a.maximum_manganu
+        for a in self._cursor.query(StalDlaEnergetyki).filter_by(nazwa=materialA):
+            B_min_mang = a.minimum_manganu
+            B_max_mang = a.maximum_manganu
+        obliczony = None
+        for a in self._cursor.query(Elektroda).filter(and_(and_(Elektroda.mangan>=A_min_mang, Elektroda.mangan<=A_max_mang), and_(Elektroda.mangan>=B_min_mang, Elektroda.mangan<=B_max_mang))):
+            obliczony = a
+            print("--->", str(a.nazwa))
 
-#cursor.execute("SELECT earnings, date FROM table")
-#Well, f.eg. you simply do:
-#json_string = json.dumps(cursor.fetchall())
-#you'll get an array of arrays...:
-#    [["earning1", "date1"], ["earning2", "date2"], ...]
+        self._wynikowy_material = obliczony #zaslepka dla testow
+
+
+

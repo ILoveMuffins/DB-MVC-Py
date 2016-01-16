@@ -50,10 +50,10 @@ class Gui(tk.Frame):
         toplevel.geometry("%dx%d+%d+%d" % (size + (x, y)))
 
     def pierwsze_update(self, makieta):
-        names = [employee.name for employee in makieta.dane]
-        self._comboBox['values'] = names
-        self._comboBox2['values'] = names
+        nazwy = [material.nazwa for material in makieta.dane]
+        self._comboBox['values'] = nazwy
+        self._comboBox2['values'] = nazwy
 
     def update(self, makieta):
-        self._label4.config(text=makieta.dane.name)
+        self._label4.config(text=makieta.dane.nazwa)
 

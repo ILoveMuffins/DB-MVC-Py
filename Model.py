@@ -38,7 +38,7 @@ class Model(object):
     def _wczytaj_stal(self, nazwaStali):
         return self._cursor.query(StalDlaEnergetyki).filter_by(nazwa=nazwaStali).one()
 
-    def _oblicz_przeciecie_zawartosci_manganu(stalA, stalB):
+    def _oblicz_przeciecie_zawartosci_manganu(self, stalA, stalB):
         min_mn = max(stalA.minimum_manganu, stalB.minimum_manganu)
         max_mn = min(stalA.maximum_manganu, stalB.maximum_manganu)
         return min_mn, max_mn

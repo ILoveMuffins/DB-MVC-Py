@@ -12,9 +12,8 @@ class Model(object):
         self._engine = create_engine('sqlite:///orm_in_detail.sqlite')
         self._session = sessionmaker(bind=self._engine)
         self._cursor = self._session()
-        self._wynikowy_material = None
+        self._wynik = None
         self._koniec = False
-        self.i = 0 # debug
 
     def pobierz_pierwsza_makiete(self):
         stale = self._cursor.query(StalDlaEnergetyki).all()
@@ -22,26 +21,25 @@ class Model(object):
         return makieta
 
     def pobierz_makiete(self):
-        makieta = Makieta(self._wynikowy_material)
+        makieta = Makieta(self._wynik, self._min_mn, self._max_mn)
         return makieta
 
-    def oblicz_material(self, materialA, materialB):
-        A_min_mang = None
-        A_max_mang = None
-        B_min_mang = None
-        B_max_mang = None
-        for a in self._cursor.query(StalDlaEnergetyki).filter_by(nazwa=materialA):
-            A_min_mang = a.minimum_manganu
-            A_max_mang = a.maximum_manganu
-        for a in self._cursor.query(StalDlaEnergetyki).filter_by(nazwa=materialA):
-            B_min_mang = a.minimum_manganu
-            B_max_mang = a.maximum_manganu
-        obliczony = None
-        for a in self._cursor.query(Elektroda).filter(and_(and_(Elektroda.mangan>=A_min_mang, Elektroda.mangan<=A_max_mang), and_(Elektroda.mangan>=B_min_mang, Elektroda.mangan<=B_max_mang))):
-            obliczony = a
-            print("--->", str(a.nazwa))
+    def oblicz(self, nazwaStaliA, nazwaStaliB):
+        stalA = self._wczytaj_stal(nazwaStaliA)
+        stalB = self._wczytaj_stal(nazwaStaliB)
 
-        self._wynikowy_material = obliczony #zaslepka dla testow
+        self._min_mn, self._max_mn = self._oblicz_przeciecie_zawartosci_manganu(stalA, stalB)
 
+        warunek = and_(Elektroda.mangan>=self._min_mn, Elektroda.mangan<=self._max_mn)
+        znalezioneElektrody = self._cursor.query(Elektroda).filter(warunek).all()
 
+        self._wynik = znalezioneElektrody
+
+    def _wczytaj_stal(self, nazwaStali):
+        return self._cursor.query(StalDlaEnergetyki).filter_by(nazwa=nazwaStali).one()
+
+    def _oblicz_przeciecie_zawartosci_manganu(stalA, stalB):
+        min_mn = max(stalA.minimum_manganu, stalB.minimum_manganu)
+        max_mn = min(stalA.maximum_manganu, stalB.maximum_manganu)
+        return min_mn, max_mn
 

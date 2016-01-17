@@ -14,15 +14,14 @@ class Strategia:
 
 class StrategiaOblicz(Strategia):
     def update(self, zdarzenie):
-        materialA = zdarzenie._materialA
-        materialB = zdarzenie._materialB
-        warunek1 = materialA != None and materialB != None
-        warunek2 = materialA != '' and materialB != ''
+        nazwaStaliA = zdarzenie._stalA
+        nazwaStaliB = zdarzenie._stalB
+        warunek1 = nazwaStaliA != None and nazwaStaliA != ''
+        warunek2 = nazwaStaliB != None and nazwaStaliB != ''
         if warunek1 and warunek2:
-            self._model.oblicz_material(materialA, materialB)
+            self._model.oblicz(nazwaStaliA, nazwaStaliB)
         else:
-            raise Exception('plik: Strategia.py, wyjatek: jeden z materialow \
-jest None badz string pusty')
+            raise Exception('plik: Strategia.py, wyjatek: nazwa stali jest None badz string pusty')
 
 class StrategiaKoniec(Strategia):
     def update(self, zdarzenie):

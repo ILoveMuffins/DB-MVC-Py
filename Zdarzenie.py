@@ -5,9 +5,9 @@ class Zdarzenie:
     __metaclass__ = ABCMeta
 
 class ZdarzenieOblicz(Zdarzenie):
-    def __init__(self, materialA=None, materialB=None):
-        self._materialA = materialA
-        self._materialB = materialB
+    def __init__(self, stalA=None, stalB=None):
+        self._stalA = stalA
+        self._stalB = stalB
 
 class ZdarzenieKoniec(Zdarzenie):
     pass

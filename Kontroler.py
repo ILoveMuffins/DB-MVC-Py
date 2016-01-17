@@ -26,11 +26,11 @@ class Kontroler(Thread):
             zdarzenie = self._kolejka_zdarzen.get()
             strategia = self._zdarzenie2strategia[type(zdarzenie)]
             try:
-                strategia.update(zdarzenie) # update modelu bo ma do niego referenc
+                strategia.update(zdarzenie)
             except (Exception) as exc:
                 print(exc)
                 continue
-            if self._model._koniec == True: # jeden z niewielu if'ow w tym prog
+            if self._model._koniec == True:
                 return
             makieta = self._model.pobierz_makiete()
             self._widok.wez_makiete(makieta)

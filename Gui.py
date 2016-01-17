@@ -2,7 +2,6 @@
 
 import tkinter as tk
 from tkinter import ttk
-#from ORM import Employee, Department
 from Makieta import Makieta
 
 class Gui(tk.Frame):
@@ -16,8 +15,8 @@ class Gui(tk.Frame):
         self._root.protocol('WM_DELETE_WINDOW', self._parent._obsluz_zamkniecie_gui)
 
     def _zainicjuj_grafike(self):
-        self._root.minsize(width=400, height=150)
-        self._root.maxsize(width=400, height=150)
+        self._root.minsize(width=400, height=200)
+        self._root.maxsize(width=400, height=450)
 
         self._label = tk.Label(self._root, text="Wybierz pierwszy material:")
         self._label.pack(anchor='w')
@@ -55,5 +54,8 @@ class Gui(tk.Frame):
         self._comboBox2['values'] = nazwy
 
     def update(self, makieta):
-        self._label4.config(text=makieta.dane.nazwa)
+        wynik_tekst = 'mangan szukanej elektrody: <' + str(makieta.min_mn) + ', ' + str(makieta.max_mn) + '>\n'
+        for elektroda in makieta.dane:
+            wynik_tekst += 'elektroda: ' + elektroda.nazwa + ', mangan: ' + str(elektroda.mangan) + '\n'
+        self._label4.config(text=wynik_tekst)
 

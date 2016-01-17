@@ -4,7 +4,6 @@ from Gui import Gui
 from Zdarzenie import ZdarzenieKoniec, ZdarzenieOblicz
 
 class Widok(object):
-    # tutaj self.root czy sam root?
     def __init__(self, root, kolejka_zdarzen):
         self._kolejka_zdarzen = kolejka_zdarzen
         self.root = root
@@ -25,8 +24,5 @@ class Widok(object):
     def generuj_zdarzenie_oblicz(self):
         materialA = self._gui._comboBox.get()
         materialB = self._gui._comboBox2.get()
-        print('Widok.py - pobrano nastepujace materialy:')
-        print(materialA)
-        print(materialB)
         self._kolejka_zdarzen.put(ZdarzenieOblicz(materialA, materialB))
 

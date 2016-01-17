@@ -16,7 +16,6 @@ class StalDlaEnergetyki(Base):
     minimum_manganu = Column(Float)
     maximum_manganu = Column(Float)
 
-
 class Elektroda(Base):
     __tablename__ = 'ELEKTRODA'
     id = Column(Integer, primary_key=True)
@@ -24,17 +23,19 @@ class Elektroda(Base):
     wegiel = Column(Float)
     mangan = Column(Float)
 
-# wypelnianie bazy danych danymi
-
 if __name__ == '__main__':
     from sqlalchemy import create_engine
     from sqlalchemy.orm import sessionmaker
-    
+
     engine = create_engine('sqlite:///orm_in_detail.sqlite')
 
     session = sessionmaker()
     session.configure(bind=engine)
     Base.metadata.create_all(engine)
+    s = session()
+
+    # wypelnianie bazy danych danymi
+    # stale
 
     stal1 = StalDlaEnergetyki(nazwa="St36K", minimum_wegla=0.08, maximum_wegla=0.016,
 minimum_manganu=0.4, maximum_manganu=1.6)
@@ -69,16 +70,6 @@ minimum_manganu=0.5, maximum_manganu=0.5)
     stal16 = StalDlaEnergetyki(nazwa="20HMFTB", minimum_wegla=0.17, maximum_wegla=0.24,
 minimum_manganu=0, maximum_manganu=0.5)
 
-    # elektrody
-    e1 = Elektroda(nazwa="OK74.46", wegiel=0.06, mangan=0.75)
-    e2 = Elektroda(nazwa="OK76.16", wegiel=0.07, mangan=0.6)
-    e3 = Elektroda(nazwa="OK76.18", wegiel=0.07, mangan=0.6)
-    e4 = Elektroda(nazwa="OK76.26", wegiel=0.07, mangan=0.65)
-    e5 = Elektroda(nazwa="OK76.28", wegiel=0.07, mangan=0.7)
-    e6 = Elektroda(nazwa="OK76.35", wegiel=0.07, mangan=0.7)
-    e7 = Elektroda(nazwa="OK76.98", wegiel=0.1, mangan=0.8)
-
-    s = session()
     s.add(stal1)
     s.add(stal2)
     s.add(stal3)
@@ -96,6 +87,15 @@ minimum_manganu=0, maximum_manganu=0.5)
     s.add(stal15)
     s.add(stal16)
 
+    # elektrody
+    e1 = Elektroda(nazwa="OK74.46", wegiel=0.06, mangan=0.75)
+    e2 = Elektroda(nazwa="OK76.16", wegiel=0.07, mangan=0.6)
+    e3 = Elektroda(nazwa="OK76.18", wegiel=0.07, mangan=0.6)
+    e4 = Elektroda(nazwa="OK76.26", wegiel=0.07, mangan=0.65)
+    e5 = Elektroda(nazwa="OK76.28", wegiel=0.07, mangan=0.7)
+    e6 = Elektroda(nazwa="OK76.35", wegiel=0.07, mangan=0.7)
+    e7 = Elektroda(nazwa="OK76.98", wegiel=0.1, mangan=0.8)
+
     s.add(e1)
     s.add(e2)
     s.add(e3)
@@ -103,11 +103,6 @@ minimum_manganu=0, maximum_manganu=0.5)
     s.add(e5)
     s.add(e6)
     s.add(e7)
+
     s.commit()
-
-    # for a in s.query(Employee).all():
-    #    print(a.name, a.hired_on, a.department_id)
-
-
-
 

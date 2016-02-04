@@ -13,9 +13,9 @@ class Model(object):
         self._session = sessionmaker(bind=self._engine)
         self._cursor = self._session()
         self._wynik = None
-        self._koniec = False
+        self.koniec = False
 
-    def pobierz_pierwsza_makiete(self):
+    def pobierz_inicjalizujaca_makiete(self):
         stale = self._cursor.query(StalDlaEnergetyki).all()
         makieta = Makieta(stale)
         return makieta
@@ -31,9 +31,7 @@ class Model(object):
         self._min_mn, self._max_mn = self._oblicz_przeciecie_zawartosci_manganu(stalA, stalB)
 
         warunek = and_(Elektroda.mangan>=self._min_mn, Elektroda.mangan<=self._max_mn)
-        znalezioneElektrody = self._cursor.query(Elektroda).filter(warunek).all()
-
-        self._wynik = znalezioneElektrody
+        self._wynik = self._cursor.query(Elektroda).filter(warunek).all()
 
     def _wczytaj_stal(self, nazwaStali):
         return self._cursor.query(StalDlaEnergetyki).filter_by(nazwa=nazwaStali).one()

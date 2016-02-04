@@ -14,8 +14,8 @@ class Strategia:
 
 class StrategiaOblicz(Strategia):
     def update(self, zdarzenie):
-        nazwaStaliA = zdarzenie._stalA
-        nazwaStaliB = zdarzenie._stalB
+        nazwaStaliA = zdarzenie.nazwaStaliA
+        nazwaStaliB = zdarzenie.nazwaStaliB
         warunek1 = nazwaStaliA != None and nazwaStaliA != ''
         warunek2 = nazwaStaliB != None and nazwaStaliB != ''
         if warunek1 and warunek2:
@@ -25,5 +25,5 @@ class StrategiaOblicz(Strategia):
 
 class StrategiaKoniec(Strategia):
     def update(self, zdarzenie):
-        self._model._koniec = True
+        self._model.koniec = True
 

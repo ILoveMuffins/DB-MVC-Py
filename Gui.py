@@ -30,7 +30,7 @@ class Gui(tk.Frame):
         self._comboBox2 = ttk.Combobox(width=30)
         self._comboBox2.pack(anchor='w')
 
-        self._button = tk.Button(text="oblicz", command=self._parent.generuj_zdarzenie_oblicz)
+        self._button = tk.Button(text="oblicz", command=self._parent.obsluz_zdarzenie_oblicz)
         self._button.pack()
 
         self._label3 = tk.Label(self._root, text="Wynik:")

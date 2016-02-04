@@ -20,8 +20,8 @@ class Kontroler(Thread):
         }
 
     def run(self):
-        makieta = self._model.pobierz_pierwsza_makiete()
-        self._widok.wez_pierwsza_makiete(makieta)
+        makieta = self._model.pobierz_inicjalizujaca_makiete()
+        self._widok.wez_inicjalizujaca_makiete(makieta)
         while True:
             zdarzenie = self._kolejka_zdarzen.get()
             strategia = self._zdarzenie2strategia[type(zdarzenie)]
@@ -30,7 +30,7 @@ class Kontroler(Thread):
             except (Exception) as exc:
                 print(exc)
                 continue
-            if self._model._koniec == True:
+            if self._model.koniec == True:
                 return
             makieta = self._model.pobierz_makiete()
             self._widok.wez_makiete(makieta)

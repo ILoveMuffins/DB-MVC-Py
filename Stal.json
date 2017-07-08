@@ -1,0 +1,117 @@
+[
+    {
+        "nazwa": "St36K", 
+        "minimum_wegla": 0.08, 
+        "maximum_wegla": 0.016, 
+        "minimum_manganu": 0.4, 
+        "maximum_manganu": 1.6
+    },
+    {
+        "nazwa": "St41K", 
+        "minimum_wegla": 0.12, 
+        "maximum_wegla": 0.2, 
+        "minimum_manganu": 0.45, 
+        "maximum_manganu": 1.6
+
+    },
+    {
+        "nazwa": "St44K", 
+        "minimum_wegla": 0.14, 
+        "maximum_wegla": 0.22, 
+        "minimum_manganu": 0.55, 
+        "maximum_manganu": 1.6
+
+    },
+    {
+        "nazwa": "15", 
+        "minimum_wegla": 0.12, 
+        "maximum_wegla": 0.18, 
+        "minimum_manganu": 0.3, 
+        "maximum_manganu": 0.8
+    },
+    {
+        "nazwa": "20G", 
+        "minimum_wegla": 0.17, 
+        "maximum_wegla": 0.24, 
+        "minimum_manganu": 0.7, 
+        "maximum_manganu": 1
+    },
+    {
+        "nazwa": "16M", 
+        "minimum_wegla": 0.12, 
+        "maximum_wegla": 0.2, 
+        "minimum_manganu": 0.5, 
+        "maximum_manganu": 0.8
+    },
+    {
+        "nazwa": "13HMF", 
+        "minimum_wegla": 0.1, 
+        "maximum_wegla": 0.18, 
+        "minimum_manganu": 0.4, 
+        "maximum_manganu": 0.7
+
+    },
+    {
+        "nazwa": "10H2M", 
+        "minimum_wegla": 0.08, 
+        "maximum_wegla": 0.15, 
+        "minimum_manganu": 0.4, 
+        "maximum_manganu": 0.6
+    },
+    {
+        "nazwa": "25", 
+        "minimum_wegla": 0.22, 
+        "maximum_wegla": 0.3, 
+        "minimum_manganu": 0.4, 
+        "maximum_manganu": 0.7
+    },
+    {
+        "nazwa": "35", 
+        "minimum_wegla": 0.32, 
+        "maximum_wegla": 0.39, 
+        "minimum_manganu": 0.5, 
+        "maximum_manganu": 0.8
+    },
+    {
+        "nazwa": "45", 
+        "minimum_wegla": 0.45, 
+        "maximum_wegla": 0.5, 
+        "minimum_manganu": 0.5, 
+        "maximum_manganu": 0.8
+    },
+    {
+        "nazwa": "25HM", 
+        "minimum_wegla": 0.22, 
+        "maximum_wegla": 0.29, 
+        "minimum_manganu": 0.4, 
+        "maximum_manganu": 0.7
+    },
+    {
+        "nazwa": "35HM", 
+        "minimum_wegla": 0.34, 
+        "maximum_wegla": 0.4, 
+        "minimum_manganu": 0.4, 
+        "maximum_manganu": 0.7
+    },
+    {
+        "nazwa": "26H2MF", 
+        "minimum_wegla": 0.22, 
+        "maximum_wegla": 0.3, 
+        "minimum_manganu": 0.3, 
+        "maximum_manganu": 0.6
+    },
+    {
+        "nazwa": "21HMF", 
+        "minimum_wegla": 0.17, 
+        "maximum_wegla": 0.35, 
+        "minimum_manganu": 0.5, 
+        "maximum_manganu": 0.5
+    },
+    {
+        "nazwa": "20HMFTB", 
+        "minimum_wegla": 0.17, 
+        "maximum_wegla": 0.24, 
+        "minimum_manganu": 0, 
+        "maximum_manganu": 0.5
+    }
+]

@@ -1,0 +1,37 @@
+[
+    {
+        "nazwa": "OK74.46", 
+        "wegiel": 0.06, 
+        "mangan": 0.75
+    },
+    {
+        "nazwa": "OK76.16", 
+        "wegiel": 0.07, 
+        "mangan": 0.6
+    },
+    {
+        "nazwa": "OK76.18", 
+        "wegiel": 0.07, 
+        "mangan": 0.6
+    },
+    {
+        "nazwa": "OK76.26", 
+        "wegiel": 0.07, 
+        "mangan": 0.65
+    },
+    {
+        "nazwa": "OK76.28", 
+        "wegiel": 0.07, 
+        "mangan": 0.7
+    },
+    {
+        "nazwa": "OK76.35", 
+        "wegiel": 0.07, 
+        "mangan": 0.7
+    },
+    {
+        "nazwa": "OK76.98", 
+        "wegiel": 0.1, 
+        "mangan": 0.8
+    }
+]
